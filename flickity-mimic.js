@@ -48,21 +48,23 @@ proto._mimic = function() {
   this.on( 'destroy', this.destroyMimic );
 
   var mimicOption = this.options.mimic;
-  if ( !mimicOption ) {
+  // Bail out if no mimic target or we’ve enabled groupCells
+  if (!mimicOption.target || this.options.groupCells) {
     return;
   }
   // HACK do async, give time for other flickity to be initalized
   var _this = this;
   setTimeout( function initNavCompanion() {
-    _this.setNavCompanion( mimicOption );
+    _this.setNavCompanion( mimicOption.target );
   });
 };
 
 proto.setNavCompanion = function( elem ) {
   elem = utils.getQueryElement( elem );
   var companion = Flickity.data( elem );
-  // stop if no companion or companion is self
-  if ( !companion || companion == this ) {
+
+  // stop if no companion or companion is self, or set to groupCells
+  if ( !companion || companion == this || companion.options.groupCells) {
     return;
   }
 
