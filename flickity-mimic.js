@@ -63,7 +63,7 @@ proto.setNavCompanion = function( elem ) {
   elem = utils.getQueryElement( elem );
   var companion = Flickity.data( elem );
 
-  // stop if no companion or companion is self, or set to groupCells
+  // stop if no companion or companion is self, same number of items and not set to groupCells
   if ( !companion || companion == this || companion.options.groupCells) {
     return;
   }
@@ -71,7 +71,13 @@ proto.setNavCompanion = function( elem ) {
   this.navCompanion = companion;
   // companion select
   var _this = this;
+  this.onNavCompanionSelect = function() {
+    _this.navCompanionSelect();
+  };
   companion.on( 'select', this.onNavCompanionSelect );
+
+  // first run
+  this.navCompanionSelect( true );
 };
 
 proto.navCompanionSelect = function( isInstant ) {
@@ -79,12 +85,10 @@ proto.navCompanionSelect = function( isInstant ) {
     return;
   }
 
-  // select slide that matches first cell of slide
   var selectedCell = this.navCompanion.selectedCells[0];
+  var selectedCellIndex = this.navCompanion.cells.indexOf( selectedCell );
 
-  this.selectCell( selectIndex, false, isInstant );
-
-  this.options.indexOffset
+  this.selectCell( selectedCellIndex + this.options.mimic.indexOffset , false, isInstant );
 };
 
 proto.activateMimic = function() {
