@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+
+  <title>Flickity Mimic</title>
+
+  <link rel="stylesheet" href="../node_modules/flickity/dist/flickity.css" />
+  <style>
+    .carousel {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      counter-reset: carousel-cell;
+    }
+
+    .cell {
+      padding-top: 56.25%;
+      width: 100%;
+      background: #CCC;
+      text-align: center;
+      color: #fff;
+      font-family: sans-serif;
+      counter-increment: carousel-cell;
+    }
+
+    .cell:before {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: 0 auto;
+      content: counter(carousel-cell);
+      text-align: center;
+      transform: translate(-50%, -50%);
+    }
+
+    .cell:nth-child(6n) { background: hsl(0, 80%, 70%); }
+    .cell:nth-child(6n+1) { background: hsl(60, 80%, 70%); }
+    .cell:nth-child(6n+2) { background: hsl(120, 80%, 70%); }
+    .cell:nth-child(6n+3) { background: hsl(180, 80%, 70%); }
+    .cell:nth-child(6n+4) { background: hsl(240, 80%, 70%); }
+    .cell:nth-child(6n+5) { background: hsl(300, 80%, 70%); }
+
+    #carousel-a {
+        left: 0;
+        width: 75%;
+    }
+
+    #carousel-a .cell:before {
+      font-size: 75px;
+    }
+
+    #carousel-b {
+        right: 0;
+        width: 25%;
+    }
+
+    #carousel-b .cell:before {
+      font-size: 25px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Flickity Mimic</h1>
+
+  <div id="carousel-a" class="carousel">
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+  </div>
+
+  <div id="carousel-b" class="carousel">
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+  </div>
+
+<script src="../node_modules/flickity/dist/flickity.pkgd.js"></script>
+<script src="../flickity-mimic.js"></script>
+<script>
+
+  var flktyA = new Flickity( document.querySelector('#carousel-a'), {
+    // options
+    cellAlign: 'center',
+    contain: true,
+    prevNextButtons: false,
+    pageDots: false
+  });
+
+  var flktyB = new Flickity( document.querySelector('#carousel-b'), {
+    // options
+    cellAlign: 'center',
+    contain: true,
+    prevNextButtons: false,
+    pageDots: false,
+    mimic: {
+      indexOffset: 1
+    }
+  });
+</script>
+</body>
+</html>
