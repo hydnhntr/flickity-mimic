@@ -43,6 +43,7 @@ Flickity.createMethods.push('_mimic');
 var proto = Flickity.prototype;
 
 proto._mimic = function() {
+  this.on( 'activate', this.activateMimic );
   this.on( 'destroy', this.destroyMimic );
 
   var mimicOption = this.options.mimic;
