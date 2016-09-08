@@ -43,8 +43,8 @@
     .cell:nth-child(6n+5) { background: hsl(300, 80%, 70%); }
 
     #carousel-a {
-        left: 0;
-        width: 75%;
+        left: 12.5%;
+        right: 25%;
     }
 
     #carousel-a .cell:before {
@@ -52,11 +52,20 @@
     }
 
     #carousel-b {
+        left: 0;
+        width: 12.5%;
+    }
+
+    #carousel-b .cell:before {
+      font-size: 12.5px;
+    }
+
+    #carousel-c {
         right: 0;
         width: 25%;
     }
 
-    #carousel-b .cell:before {
+    #carousel-c .cell:before {
       font-size: 25px;
     }
   </style>
@@ -89,6 +98,18 @@
     <div class="cell"></div>
   </div>
 
+  <div id="carousel-c" class="carousel">
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+  </div>
+
 <script src="../node_modules/flickity/dist/flickity.pkgd.js"></script>
 <script src="../flickity-mimic.js"></script>
 <script>
@@ -97,21 +118,23 @@
     // options
     cellAlign: 'center',
     contain: true,
+    wrapAround: true,
     prevNextButtons: false,
     pageDots: false
   });
 
-  var flktyB = new Flickity( document.querySelector('#carousel-b'), {
-    // options
+  var mimicOptions = {
     cellAlign: 'center',
     contain: true,
+    wrapAround: true,
     prevNextButtons: false,
     pageDots: false,
-    mimic: {
-      indexOffset: 1,
-      target: '#carousel-a'
-    }
-  });
+    accessibility: false,
+    draggable: false
+  }
+
+  var flktyB = new Flickity( document.querySelector('#carousel-b'), fizzyUIUtils.extend( {mimic: {target: '#carousel-a', indexOffset: -1}}, mimicOptions ) );
+  var flktyC = new Flickity( document.querySelector('#carousel-c'), fizzyUIUtils.extend( {mimic: {target: '#carousel-a', indexOffset: 1}}, mimicOptions ) );
 </script>
 </body>
 </html>

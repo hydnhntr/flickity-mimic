@@ -43,8 +43,6 @@ Flickity.createMethods.push('_mimic');
 var proto = Flickity.prototype;
 
 proto._mimic = function() {
-  this.on( 'activate', this.activateMimic );
-  this.on( 'deactivate', this.deactivateMimic );
   this.on( 'destroy', this.destroyMimic );
 
   var mimicOption = this.options.mimic;
@@ -54,12 +52,12 @@ proto._mimic = function() {
   }
   // HACK do async, give time for other flickity to be initalized
   var _this = this;
-  setTimeout( function initNavCompanion() {
-    _this.setNavCompanion( mimicOption.target );
+  setTimeout( function initCompanion() {
+    _this.setCompanion( mimicOption.target );
   });
 };
 
-proto.setNavCompanion = function( elem ) {
+proto.setCompanion = function( elem ) {
   elem = utils.getQueryElement( elem );
   var companion = Flickity.data( elem );
 
@@ -68,41 +66,63 @@ proto.setNavCompanion = function( elem ) {
     return;
   }
 
-  this.navCompanion = companion;
+  this.companion = companion;
   // companion select
   var _this = this;
-  this.onNavCompanionSelect = function() {
-    _this.navCompanionSelect();
+  this.onCompanionSelect = function() {
+    _this.companionSelect();
   };
-  companion.on( 'select', this.onNavCompanionSelect );
+  companion.on( 'select', this.onCompanionSelect );
+
+  // companion scroll
+  this.onCompanionScroll = function() {
+    // pass through event arguments
+    _this.companionScroll.apply(_this, arguments);
+  };
+  companion.on( 'scroll', this.onCompanionScroll );
 
   // first run
-  this.navCompanionSelect( true );
+  this.companionSelect( true );
 };
 
-proto.navCompanionSelect = function( isInstant ) {
-  if ( !this.navCompanion ) {
+proto.companionSelect = function( isInstant ) {
+  if ( !this.companion ) {
     return;
   }
 
-  var selectedCell = this.navCompanion.selectedCells[0];
-  var selectedCellIndex = this.navCompanion.cells.indexOf( selectedCell );
+  var cellCount = this.companion.cells.length;
+  var companionIndex = this.companion.selectedIndex;
+  var localIndex = companionIndex + this.options.mimic.indexOffset;
 
-  this.selectCell( selectedCellIndex + this.options.mimic.indexOffset , false, isInstant );
+  if (localIndex < 0) {
+    localIndex = localIndex + cellCount;
+  } else if (localIndex > cellCount - 1) {
+    localIndex = cellCount - localIndex;
+  }
+
+  this.selectCell( localIndex, false, isInstant );
+};
+
+proto.companionScroll = function( progress, positionX ) {
+  var companionCellPercentMoved = (this.companion.selectedCell.target - (positionX + this.companion.cursorPosition)) / this.companion.size.innerWidth * 100;
+  this.x = -this.selectedCell.target + (this.size.innerWidth / 100 * companionCellPercentMoved);
+
+  // If we catch a companion drag while we’re settling, we want to reset any physics
+  this.isAnimating = false;
+  this.velocity = 0;
+  this.positionSlider();
 };
 
 proto.activateMimic = function() {
-  this.navCompanionSelect( true );
-};
-
-proto.deactivateMimic = function() {
+   this.companionSelect( true );
 };
 
 proto.destroyMimic = function() {
-  if ( !this.navCompanion ) {
+  if ( !this.companion ) {
     return;
   }
-  delete this.navCompanion;
+  this.companion.off( 'select', this.onCompanionSelect );
+  delete this.companion;
 };
 
 // -----  ----- //
