@@ -63,7 +63,7 @@ proto.setCompanion = function( elem ) {
   var companion = Flickity.data( elem );
 
   // stop if no companion or companion is self, same number of items and not set to groupCells
-  if ( !companion || companion == this || companion.options.groupCells) {
+  if ( !companion || companion == this || companion.cells.length !== this.cells.length || companion.options.groupCells) {
     return;
   }
 
@@ -95,9 +95,9 @@ proto.companionSelect = function( isInstant ) {
   var companionIndex = this.companion.selectedIndex;
   var localIndex = companionIndex + this.options.mimic.indexOffset;
 
-  if (localIndex < 0) {
+  if ( localIndex < 0 ) {
     localIndex = localIndex + cellCount;
-  } else if (localIndex > cellCount - 1) {
+  } else if ( localIndex > cellCount - 1 ) {
     localIndex = cellCount - localIndex;
   }
 
@@ -105,10 +105,10 @@ proto.companionSelect = function( isInstant ) {
 };
 
 proto.companionScroll = function( progress, positionX ) {
-  var companionCellPercentMoved = (this.companion.selectedCell.target - (positionX + this.companion.cursorPosition)) / this.companion.size.innerWidth * 100;
-  this.x = -this.selectedCell.target + (this.size.innerWidth / 100 * companionCellPercentMoved);
+  var companionCellPercentMoved = ( this.companion.selectedCell.target - ( positionX + this.companion.cursorPosition ) ) / this.companion.size.innerWidth * 100;
+  this.x = -this.selectedCell.target + ( this.size.innerWidth / 100 * companionCellPercentMoved );
 
-  // If we catch a companion drag while we’re settling, we want to reset any physics
+  // If we catch the companion drag while we’re settling we want to reset any physics
   this.isAnimating = false;
   this.velocity = 0;
   this.positionSlider();
@@ -123,6 +123,7 @@ proto.destroyMimic = function() {
     return;
   }
   this.companion.off( 'select', this.onCompanionSelect );
+  this.companion.off( 'scroll', this.onCompanionScroll );
   delete this.companion;
 };
 
