@@ -49,7 +49,7 @@ $('.gallery-b').flickity({
   mimic: {
     target: '.gallery-a',
     indexOffset: 1
-	}
+  }
 });
 ```
 
