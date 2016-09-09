@@ -8,7 +8,7 @@ Demo ☞ [hydnhntr.github.io/flickity-mimic/](http://hydnhntr.github.io/flickity
 + Real-time dragging and navigation actions replicated
 + `indexOffset` option to set the mimic ahead or behind the target’s `selectedIndex`
 + No 2 way binding/sync compatibility, see [Flickity Sync](https://github.com/metafizzy/flickity-sync) instead
-+ Intended to work with `dragging` and `accesibility` options set to `false`.
++ Intended to work with `dragging` and `accessibility` options set to `false`.
 + No support for `groupCells` option, requires matching cell counts and works best with `wrapAround: true`
 
 ### Next up
@@ -58,13 +58,13 @@ $('.gallery-b').flickity({
 ``` js
 var flktyA = new Flickity('.gallery-a');
 var flktyB = new Flickity( '.gallery-b', {
-	wrapAround: true,
-	draggable: false,
-	accessibility: false,
-	mimic: {
-		target: '.gallery-a',
-		indexOffset: 1
-	}
+  wrapAround: true,
+  draggable: false,
+  accessibility: false,
+  mimic: {
+    target: '.gallery-a',
+    indexOffset: 1
+  }
 });
 ```
 
@@ -76,9 +76,9 @@ var flktyB = new Flickity( '.gallery-b', {
 </div>
 <div class="gallery gallery-b js-flickity"
   data-flickity='{
-    "wrapAround": true, 
-    "draggable": false, 
-    "accessibility": false, 
+    "wrapAround": true,
+    "draggable": false,
+    "accessibility": false,
     "mimic": {
       "target": "#carousel-a",
       "indexOffset": 1
