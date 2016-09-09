@@ -1,9 +1,9 @@
 # Flickity Mimic
-Mimicry extension for Metafizzy’s [Flickity](http://flickity.metafizzy.co/).
+Mimicry extension for Metafizzy’s [Flickity](http://flickity.metafizzy.co/). Let’s Flickity instances mimic real-time interactions of another.
 
-Chosen Flickity instances can mimic the real-time interactions of another.
+---
 
-[Demo hydnhntr.github.io/flickity-mimic/](http://hydnhntr.github.io/flickity-mimic/).
+Demo ☞ [hydnhntr.github.io/flickity-mimic/](http://hydnhntr.github.io/flickity-mimic/)
 
 + Real-time dragging and navigation actions replicated
 + `indexOffset` option to set the mimic ahead or behind the target’s `selectedIndex`
