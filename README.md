@@ -9,10 +9,11 @@ Chosen Flickity instances can mimic the real-time interactions of another.
 + Intended to work with `dragging` and `accesibility` options set to `false`.
 + No support for `groupCells` option, requires matching cell counts and works best with `wrapAround: true`
 
-# Next up
+### Next up
 
 + Support different cell widths and `cellAlign` option.
 
+## Usage
 
 ``` html
 <div class="gallery gallery-a">
