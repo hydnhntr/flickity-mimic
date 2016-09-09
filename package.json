@@ -11,11 +11,11 @@
    "type": "git",
    "url": "git://github.com/hydnhntr/flickity-mimic.git"
  },
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "flickity": "^2.0.0",
     "fizzy-ui-utils": "^2.0.0"
   },
-  "devDependencies": {},
   "keywords": [
     "flickity",
     "browser",
