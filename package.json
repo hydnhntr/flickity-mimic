@@ -8,19 +8,19 @@
   },
   "main": "flickity-mimic.js",
   "repository": {
-   "type": "git",
-   "url": "git://github.com/hydnhntr/flickity-mimic.git"
- },
+    "type": "git",
+    "url": "git://github.com/hydnhntr/flickity-mimic.git"
+  },
   "dependencies": {},
   "devDependencies": {
+    "fizzy-ui-utils": "^2.0.0",
     "flickity": "^2.0.0",
-    "fizzy-ui-utils": "^2.0.0"
+    "normalize.css": "^4.2.0"
   },
   "keywords": [
     "flickity",
     "browser",
     "DOM"
   ],
-
   "license": "MIT"
 }
