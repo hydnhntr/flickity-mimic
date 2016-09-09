@@ -47,8 +47,8 @@ wrapAround: true,
   draggable: false,
   accessibility: false,
   mimic: {
-    'target': '.gallery-a',
-    'indexOffset': 1
+    target: '.gallery-a',
+    indexOffset: 1
 	}
 });
 ```
@@ -62,8 +62,8 @@ var flktyB = new Flickity( '.gallery-b', {
 	draggable: false,
 	accessibility: false,
 	mimic: {
-		'target': '.gallery-a',
-		'indexOffset': 1
+		target: '.gallery-a',
+		indexOffset: 1
 	}
 });
 ```
