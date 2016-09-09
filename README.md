@@ -43,7 +43,7 @@ mimic: {
 ``` js
 $('.gallery-a').flickity();
 $('.gallery-b').flickity({
-wrapAround: true,
+  wrapAround: true,
   draggable: false,
   accessibility: false,
   mimic: {
@@ -79,10 +79,10 @@ var flktyB = new Flickity( '.gallery-b', {
     "wrapAround": true, 
     "draggable": false, 
     "accessibility": false, 
-      "mimic": {
-        "target": "#carousel-a",
-        "indexOffset": 1
-      }
+    "mimic": {
+      "target": "#carousel-a",
+      "indexOffset": 1
+    }
   }'>
   ...
 </div>
