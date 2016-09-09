@@ -48,8 +48,8 @@
     .cell:nth-child(6n+4) { background: hsl(240, 80%, 70%); }
     .cell:nth-child(6n+5) { background: hsl(300, 80%, 70%); }
 
-    /* Sizing */
-    .cell:nth-child(6n+1) { width: 56.25%; } /* Square */
+    /* Widths */
+    /* .cell:nth-child(6n+1) { width: 56.25%; } */
 
     #carousel-a {
         left: 12.5%;
@@ -141,7 +141,6 @@
       http://flickity.metafizzy.co/#initialize-with-vanilla-javascript
   */
   var flktyA = new Flickity( document.querySelector('#carousel-a'), {
-    // options
     wrapAround: true,
     prevNextButtons: false,
     pageDots: false
