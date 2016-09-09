@@ -6,7 +6,9 @@
 
   <title>Flickity Mimic</title>
 
-  <link rel="stylesheet" href="../node_modules/flickity/dist/flickity.css" />
+  <link rel="stylesheet" href="https://unpkg.com/normalize.css" />
+  <link rel="stylesheet" href="https://unpkg.com/flickity@2.0/dist/flickity.css" />
+
   <style>
     .carousel {
       position: absolute;
@@ -33,14 +35,21 @@
       content: counter(carousel-cell);
       text-align: center;
       transform: translate(-50%, -50%);
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
     }
 
-    .cell:nth-child(6n) { background: hsl(0, 80%, 70%); }
+    /* Colouring */
+    .cell { background: hsl(0, 80%, 70%); }
     .cell:nth-child(6n+1) { background: hsl(60, 80%, 70%); }
     .cell:nth-child(6n+2) { background: hsl(120, 80%, 70%); }
     .cell:nth-child(6n+3) { background: hsl(180, 80%, 70%); }
     .cell:nth-child(6n+4) { background: hsl(240, 80%, 70%); }
     .cell:nth-child(6n+5) { background: hsl(300, 80%, 70%); }
+
+    /* Sizing */
+    .cell:nth-child(6n+1) { width: 56.25%; } /* Square */
 
     #carousel-a {
         left: 12.5%;
@@ -84,6 +93,9 @@
     <div class="cell"></div>
     <div class="cell"></div>
     <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
   </div>
 
   <div id="carousel-b" class="carousel">
@@ -96,45 +108,56 @@
     <div class="cell"></div>
     <div class="cell"></div>
     <div class="cell"></div>
-  </div>
-
-  <div id="carousel-c" class="carousel">
-    <div class="cell"></div>
-    <div class="cell"></div>
-    <div class="cell"></div>
-    <div class="cell"></div>
-    <div class="cell"></div>
-    <div class="cell"></div>
     <div class="cell"></div>
     <div class="cell"></div>
     <div class="cell"></div>
   </div>
 
-<script src="../node_modules/flickity/dist/flickity.pkgd.js"></script>
+  <!--
+      Initialize with HTML
+      http://flickity.metafizzy.co/#initialize-with-html
+  -->
+  <div id="carousel-c" class="carousel js-flickity" data-flickity='{"wrapAround": true, "prevNextButtons": false, "pageDots": false, "accessibility": false, "draggable": false, "mimic": {"target": "#carousel-a", "indexOffset": 1}}'>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+  </div>
+
+<script src="https://unpkg.com/flickity@2.0/dist/flickity.pkgd.min.js"></script>
 <script src="../flickity-mimic.js"></script>
 <script>
 
+  /*
+      Initialize with Vanilla JavaScript
+      http://flickity.metafizzy.co/#initialize-with-vanilla-javascript
+  */
   var flktyA = new Flickity( document.querySelector('#carousel-a'), {
     // options
-    cellAlign: 'center',
-    contain: true,
     wrapAround: true,
     prevNextButtons: false,
     pageDots: false
   });
 
-  var mimicOptions = {
-    cellAlign: 'center',
-    contain: true,
+  var flktyB = new Flickity( document.querySelector('#carousel-b'), {
     wrapAround: true,
     prevNextButtons: false,
     pageDots: false,
     accessibility: false,
-    draggable: false
-  }
-
-  var flktyB = new Flickity( document.querySelector('#carousel-b'), fizzyUIUtils.extend( {mimic: {target: '#carousel-a', indexOffset: -1}}, mimicOptions ) );
-  var flktyC = new Flickity( document.querySelector('#carousel-c'), fizzyUIUtils.extend( {mimic: {target: '#carousel-a', indexOffset: 1}}, mimicOptions ) );
+    draggable: false,
+    mimic: {
+      target: '#carousel-a',
+      indexOffset: -1
+    }
+  });
 </script>
 </body>
 </html>
