@@ -1,15 +1,15 @@
 # Flickity Mimic
-Mimicry extension for Metafizzy’s [Flickity](http://flickity.metafizzy.co/). Let’s Flickity instances mimic real-time interactions of another.
+Mimicry extension for Metafizzy’s [Flickity](http://flickity.metafizzy.co/). Lets Flickity instances mimic real-time interactions of another.
 
 ---
 
 Demo ☞ [hydnhntr.github.io/flickity-mimic/](http://hydnhntr.github.io/flickity-mimic/)
 
-+ Real-time dragging and navigation actions replicated
++ Replicates dragging and navigation actions in real-time  
 + `indexOffset` option to set the mimic ahead or behind the target’s `selectedIndex`
-+ No 2 way binding/sync compatibility, see [Flickity Sync](https://github.com/metafizzy/flickity-sync) instead
++ No 2 way binding/sync capability, see [Flickity Sync](https://github.com/metafizzy/flickity-sync) instead
 + Intended to work with `dragging` and `accessibility` options set to `false`.
-+ No support for `groupCells` option, requires matching cell counts and works best with `wrapAround: true`
++ No support for `groupCells` option, requires identical cell counts and works best with `wrapAround: true`
 
 ### Next up
 
