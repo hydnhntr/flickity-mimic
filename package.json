@@ -1,9 +1,16 @@
 {
   "name": "flickity-mimic",
   "version": "1.0.0",
-  "private": true,
-  "description": "Enable mimicry for Flickity",
+  "description": "Enable mimicry option for Metafizzy’s Flickity",
+  "author": {
+    "name": "Hayden Hunter",
+    "url": "https://github.com/hydnhntr"
+  },
   "main": "flickity-mimic.js",
+  "repository": {
+   "type": "git",
+   "url": "git://github.com/hydnhntr/flickity-mimic.git"
+ },
   "dependencies": {
     "flickity": "^2.0.0",
     "fizzy-ui-utils": "^2.0.0"
@@ -14,9 +21,6 @@
     "browser",
     "DOM"
   ],
-  "author": "Hayden Hunter",
-  "license": "MIT",
-  "directories": {
-    "test": "test"
-  }
+
+  "license": "MIT"
 }
