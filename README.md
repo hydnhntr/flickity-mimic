@@ -29,11 +29,11 @@ Demo ☞ [hydnhntr.github.io/flickity-mimic/](http://hydnhntr.github.io/flickity
 ``` js
 // mimic options object to be supplied as nameValuePair on Flickity config
 mimic: {
-	target: '.gallery-a'
-	// set as a selector string or HTMLElement `document.querySelector('.gallery-a')`, `jQuery('.gallery-a')[0]`
+  target: '.gallery-a'
+  // set as a selector string or HTMLElement `document.querySelector('.gallery-a')`, `jQuery('.gallery-a')[0]`
 
-	indexOffset: 1
-	// Integer, defaults to 0
+  indexOffset: 1
+  // Integer, defaults to 0
 }
 ```
 
@@ -43,12 +43,12 @@ mimic: {
 ``` js
 $('.gallery-a').flickity();
 $('.gallery-b').flickity({
-	wrapAround: true,
-	draggable: false,
+wrapAround: true,
+  draggable: false,
   accessibility: false,
   mimic: {
-		'target': '.gallery-a',
-		'indexOffset': 1
+    'target': '.gallery-a',
+    'indexOffset': 1
 	}
 });
 ```
@@ -60,7 +60,7 @@ var flktyA = new Flickity('.gallery-a');
 var flktyB = new Flickity( '.gallery-b', {
 	wrapAround: true,
 	draggable: false,
-  accessibility: false,
+	accessibility: false,
 	mimic: {
 		'target': '.gallery-a',
 		'indexOffset': 1
@@ -75,7 +75,15 @@ var flktyB = new Flickity( '.gallery-b', {
   ...
 </div>
 <div class="gallery gallery-b js-flickity"
-  data-flickity='{"wrapAround": true, "draggable": false, "accessibility": false, "mimic": {"target": "#carousel-a", "indexOffset": 1}}'>
+  data-flickity='{
+    "wrapAround": true, 
+    "draggable": false, 
+    "accessibility": false, 
+      "mimic": {
+        "target": "#carousel-a",
+        "indexOffset": 1
+      }
+  }'>
   ...
 </div>
 ```
